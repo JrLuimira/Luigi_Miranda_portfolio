@@ -1,143 +1,57 @@
-# Luigi Miranda — Portafolio web
+# Luigi Miranda | Robotics, Vision & Software
 
-Portafolio personal estático en español e inglés, diseñado para GitHub Pages.
-No requiere Node.js, PHP, base de datos ni instalación de dependencias.
+Portfolio estático bilingüe (inglés por defecto, español opcional), preparado para GitHub Pages.
 
-## 1. Probar en Ubuntu
+## Probar
 
-Abre `index.html` en tu navegador. También puedes ejecutar desde la carpeta del proyecto:
+Desde la carpeta del proyecto:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Entra en http://localhost:8000.
+Abre http://localhost:8000. No requiere instalar dependencias.
 
-## 2. Personalizar antes de publicar
+## Agregar el vídeo panorámico de portada
 
-Edita `profile.js`:
+Guarda tu vídeo como `assets/hero/banner.mp4`. Se mostrará de fondo a todo el ancho con reproducción automática silenciosa, en bucle, y un botón de pausa. Se detiene al salir de la portada.
 
-- `social`: pega tus URLs de LinkedIn, GitHub, correo y CV.
-- `education`: coloca el nombre real de tu universidad, fechas y título.
-- `experience`: añade tu cargo, empresa o laboratorio, fechas y contribuciones.
-- `projects`: agrega proyectos, tecnologías y enlaces al repositorio o demostración.
-- `posts`: añade enlaces públicos de cada publicación de LinkedIn.
-- `photo`: ruta de tu fotografía personal (opcional).
-- `skills`: adapta la lista de tecnologías.
+Opcionalmente añade `assets/hero/poster.jpg` para que aparezca mientras carga el vídeo. Si todavía no existe el vídeo ni el póster, verás un fondo de programación animado.
 
-Los textos en `es` y `en` corresponden a los idiomas español e inglés. Si solo escribes
-español, el texto español se mostrará también como alternativa en inglés.
+Recomendación: vídeo horizontal 16:9 o 21:9, MP4 (H.264), 720p/1080p, con los elementos importantes centrados. Para comprimirlo:
 
-Ejemplo para añadir una publicación a la lista `posts`:
-
-```js
-posts: [
-  {
-    date: "2026-11-17",
-    title: {
-      es: "Mi proyecto de robótica",
-      en: "My robotics project"
-    },
-    description: {
-      es: "Una breve descripción de los resultados.",
-      en: "A brief description of the results."
-    },
-    url: "https://www.linkedin.com/posts/URL-REAL-DE-TU-PUBLICACION"
-  }
-]
+```bash
+ffmpeg -i original.mp4 -vf "scale=-2:1080" -c:v libx264 -crf 25 -preset medium -an -movflags +faststart assets/hero/banner.mp4
 ```
 
-Puedes obtener la URL desde una publicación de LinkedIn con el menú de tres puntos
-y la opción de copiar enlace. Este sitio enlaza las publicaciones; no extrae datos
-automáticamente de LinkedIn.
+## Multimedia de proyectos
 
-### Añadir fotos y vídeos de tus proyectos
-
-La versión multimedia ya incluye WALTER, SO-101, COD y datos sintéticos.
-Cada tarjeta tiene un selector de vídeo y dos fotografías. Guarda tus archivos
-reales con los siguientes nombres (no es necesario modificar código):
+Cada proyecto muestra un reproductor de vídeo y dos fotos con ampliación. Coloca estos archivos reales en la carpeta correspondiente:
 
 | Proyecto | Carpeta | Archivos |
 |---|---|---|
-| WALTER | `assets/walter/` | `demo.mp4`, `photo-1.jpg`, `photo-2.jpg` |
-| SO-101 | `assets/so101/` | `demo.mp4`, `photo-1.jpg`, `photo-2.jpg` |
-| COD | `assets/cod/` | `demo.mp4`, `photo-1.jpg`, `photo-2.jpg` |
-| Datos sintéticos | `assets/synthetic/` | `demo.mp4`, `photo-1.jpg`, `photo-2.jpg` |
+| WALTER | assets/walter/ | demo.mp4, photo-1.jpg, photo-2.jpg |
+| SO-101 | assets/so101/ | demo.mp4, photo-1.jpg, photo-2.jpg |
+| COD | assets/cod/ | demo.mp4, photo-1.jpg, photo-2.jpg |
+| Synthetic Data | assets/synthetic/ | demo.mp4, photo-1.jpg, photo-2.jpg |
 
-Si un archivo no existe, se muestra una ilustración conceptual con la leyenda
-"Contenido multimedia próximamente". Cuando añadas tus fotos o vídeos con
-los nombres indicados, se mostrarán al seleccionar la pestaña correspondiente.
-No se incluyen fotos de terceros ni vídeos ficticios.
+Si falta un archivo, el sitio lo indica y no muestra imágenes rotas. Puedes añadir vídeos o fotos con otros nombres editando el arreglo `media` de cada proyecto en `profile.js`.
 
-También puedes usar más fotos, cambiar extensiones o usar una URL HTTPS directa
-a un archivo multimedia en el arreglo `media` del proyecto en `profile.js`.
+La foto incluida en `assets/profile.png` es la fotografía real extraída del CV que compartiste. Puedes reemplazarla por una de mayor resolución. También incluí el CV original en `assets/cv.pdf`: revisa si deseas publicar todos los datos que contiene antes de subirlo a GitHub.
 
-```js
-media: [
-  { type: "video", src: "assets/so101/demo.mp4" },
-  { type: "image", src: "assets/so101/photo-1.jpg",
-    alt: { es: "Robot SO-101 durante la teleoperación", en: "SO-101 during teleoperation" } },
-  { type: "image", src: "assets/so101/photo-2.png" }
-]
-```
+## Editar contenido
 
-Para los vídeos, usa MP4 con vídeo H.264 y audio AAC, preferiblemente optimizados
-para web. Si tienes FFmpeg, puedes comprimir un vídeo así:
+- `profile.js`: formación, experiencia, investigación, proyectos, enlaces de LinkedIn y contacto.
+- `index.html`: estructura, portada y sección de presentación.
+- `app.js`: funciones de galerías, filtros, idiomas, vídeo y navegación.
+- `styles.css`: diseño.
 
-```bash
-ffmpeg -i original.mp4 -vf "scale=-2:720" -c:v libx264 -crf 25 -preset medium -c:a aac -movflags +faststart demo.mp4
-```
+Agrega tus URLs personales de GitHub y LinkedIn en `social` de `profile.js`. Los enlaces de las dos publicaciones compartidas ya están incorporados.
 
-Coloca tu foto de perfil en `assets/profile.jpg` si deseas que aparezca en Sobre mí.
-Los enlaces de LinkedIn ya proporcionados están en `profile.js`. El título y
-resumen de la publicación general se pueden reemplazar por sus datos reales.
+## Publicar en GitHub Pages
 
-El fondo de la portada usa Canvas 2D con una animación de articulaciones y
-trayectorias; respeta la preferencia de movimiento reducido del navegador.
+1. Sube los archivos y la carpeta `assets` directamente a la raíz de tu repositorio público.
+2. En GitHub, entra en Settings → Pages, elige Deploy from a branch, rama `main`, carpeta `/(root)`.
+3. Guarda y abre la dirección que GitHub te indique.
 
-Si deseas un CV descargable, guarda tu PDF en `assets/cv.pdf` y cambia
-`cv: ""` por `cv: "assets/cv.pdf"`.
-
-Revisa todos los datos personales y elimina o actualiza cualquier proyecto que no
-represente tu trabajo actual. Los enlaces vacíos no aparecen en la página.
-
-## 3. Subir a GitHub Pages
-
-1. Crea un repositorio público en GitHub. Puedes llamarlo
-   `TU-USUARIO.github.io` para publicar en la raíz o `portafolio`.
-2. Sube el **contenido de esta carpeta**, no la carpeta contenedora.
-   `index.html` debe quedar junto a `styles.css`, `app.js` y `profile.js`
-   en la raíz del repositorio.
-3. Abre **Settings → Pages**.
-4. En **Build and deployment**, selecciona **Deploy from a branch**.
-5. Selecciona la rama `main`, carpeta `/(root)` y guarda.
-6. Cuando GitHub indique que está publicado, abre la URL de Pages.
-
-También puedes subirlo desde la terminal:
-
-```bash
-git init
-git add .
-git commit -m "Crear portafolio personal"
-git branch -M main
-git remote add origin https://github.com/TU-USUARIO/portafolio.git
-git push -u origin main
-```
-
-El repositorio debe existir antes de ejecutar los dos últimos comandos.
-No subas contraseñas, credenciales ni información personal que no quieras publicar.
-
-## 4. Archivos
-
-| Archivo | Función |
-|---|---|
-| index.html | Estructura y contenido principal |
-| styles.css | Colores, diseño responsive y tipografía |
-| profile.js | Formación, experiencia, proyectos, publicaciones y enlaces |
-| app.js | Renderizado de contenido, idiomas y menú móvil |
-| background.js | Fondo robótico animado |
-| assets/favicon.svg | Icono de la pestaña |
-
-Para modificar los colores principales, cambia las variables de `:root` en
-`styles.css`. Los textos generales y sus traducciones se pueden editar en
-`app.js`.
+Evita subir vídeos sin optimizar o datos privados que no quieras publicar.

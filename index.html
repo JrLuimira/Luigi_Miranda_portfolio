@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Portafolio de Luigi Miranda — ingeniería mecatrónica, robótica y visión artificial.">
+  <meta name="theme-color" content="#091a22">
+  <title>Luigi Miranda | Robotics & Computer Vision</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Saltar al contenido</a>
+  <header class="header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#inicio" aria-label="Luigi Miranda — Inicio"><span class="brand-mark">LM<span>.</span></span><span class="brand-name">Luigi Miranda</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" aria-label="Abrir menú"><span></span><span></span></button>
+      <nav id="navigation" aria-label="Navegación principal">
+        <a href="#sobre-mi" data-i18n="navAbout">Sobre mí</a>
+        <a href="#trayectoria" data-i18n="navExperience">Trayectoria</a>
+        <a href="#proyectos" data-i18n="navProjects">Proyectos</a>
+        <a href="#publicaciones" data-i18n="navPosts">Publicaciones</a>
+      </nav>
+      <button id="language" class="language" type="button" aria-label="Switch to English">EN</button>
+    </div>
+  </header>
+  <main id="main">
+    <section id="inicio" class="hero-shell">
+      <canvas id="robot-background" aria-hidden="true"></canvas>
+      <div class="hero container">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="status-dot"></span><span data-i18n="heroLabel">INGENIERÍA · ROBÓTICA · IA</span></div>
+        <h1>Luigi <br>Miranda<span class="accent">.</span></h1>
+        <p class="hero-role" data-i18n="heroRole">Ingeniería mecatrónica y sistemas inteligentes.</p>
+        <p class="hero-description" data-i18n="heroDescription">Desarrollo soluciones que conectan la percepción, el software y la robótica con aplicaciones en el mundo real.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#proyectos"><span data-i18n="seeProjects">Explorar proyectos</span><span aria-hidden="true">→</span></a>
+          <a class="button secondary" href="#contacto"><span data-i18n="contact">Contacto</span><span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-top"><span>LM / ENGINEERING PORTFOLIO</span><span>FIG. 01</span></div>
+        <svg viewBox="0 0 500 430" role="img" aria-labelledby="robot-title robot-desc" xmlns="http://www.w3.org/2000/svg">
+          <title id="robot-title">Ilustración conceptual de un brazo robótico</title>
+          <desc id="robot-desc">Brazo articulado, trayectoria de movimiento y un objeto objetivo en una cuadrícula técnica.</desc>
+          <defs>
+            <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#d2dcda" stroke-width="1"/></pattern>
+            <linearGradient id="metal" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#c8d5d4"/></linearGradient>
+            <marker id="arrow" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0 0 6 3 0 6Z" fill="#288678"/></marker>
+          </defs>
+          <rect x="23" y="23" width="454" height="384" rx="10" fill="url(#grid)" opacity=".7"/>
+          <path d="M65 355H444M95 385V62" stroke="#9caeae" stroke-width="1" stroke-dasharray="4 5"/>
+          <path d="M95 355h35m-35 0v-35" stroke="#288678" stroke-width="2" marker-end="url(#arrow)"/>
+          <text x="137" y="360" class="svg-label">X</text><text x="91" y="309" class="svg-label">Y</text>
+          <circle cx="350" cy="151" r="96" fill="none" stroke="#9bc0b7" stroke-width="1" stroke-dasharray="5 7"/>
+          <path class="trajectory-line" d="M315 79C391 63 435 113 415 183S358 251 391 297" fill="none" stroke="#288678" stroke-width="2" stroke-dasharray="7 8" marker-end="url(#arrow)"/>
+          <rect x="131" y="334" width="137" height="24" rx="4" fill="#15353a"/>
+          <rect x="161" y="310" width="77" height="27" rx="5" fill="url(#metal)" stroke="#244b50" stroke-width="2"/>
+          <path d="M201 302 201 246" stroke="#17383f" stroke-width="44" stroke-linecap="round"/>
+          <path d="M201 300 201 246" stroke="url(#metal)" stroke-width="32" stroke-linecap="round"/>
+          <path d="M201 246 146 157" stroke="#17383f" stroke-width="47" stroke-linecap="round"/>
+          <path d="M201 246 146 157" stroke="url(#metal)" stroke-width="35" stroke-linecap="round"/>
+          <path d="M146 157 281 112" stroke="#17383f" stroke-width="43" stroke-linecap="round"/>
+          <path d="M146 157 281 112" stroke="url(#metal)" stroke-width="31" stroke-linecap="round"/>
+          <path d="M281 112 327 152" stroke="#17383f" stroke-width="35" stroke-linecap="round"/>
+          <path d="M281 112 327 152" stroke="url(#metal)" stroke-width="24" stroke-linecap="round"/>
+          <g fill="#15353a" stroke="#7cae9e" stroke-width="4"><circle cx="201" cy="246" r="22"/><circle cx="146" cy="157" r="22"/><circle cx="281" cy="112" r="18"/><circle cx="201" cy="304" r="16"/></g>
+          <g fill="#68b8a0"><circle cx="201" cy="246" r="6"/><circle cx="146" cy="157" r="6"/><circle cx="281" cy="112" r="5"/><circle cx="201" cy="304" r="5"/></g>
+          <g transform="translate(327 152) rotate(-44)"><rect x="-12" y="-7" width="24" height="28" rx="3" fill="#17383f"/><path d="M-8 18v17l-8 8M8 18v17l8 8" fill="none" stroke="#17383f" stroke-width="7" stroke-linecap="round"/></g>
+          <rect x="370" y="286" width="43" height="43" rx="4" fill="#88c6b3" fill-opacity=".45" stroke="#288678" stroke-width="2"/>
+          <path d="M365 281h12m-12 0v12m53-12h-12m12 0v12m-53 41h12m-12 0v-12m53 12h-12m12 0v-12" stroke="#288678" stroke-width="2" fill="none"/>
+          <path d="M136 133 94 91H54M303 102 341 58h80M413 307h31" stroke="#7d9694" fill="none"/>
+          <text x="53" y="83" class="svg-label">J02 / JOINT</text><text x="345" y="51" class="svg-label">TRAJECTORY</text><text x="367" y="352" class="svg-label">TARGET</text>
+        </svg>
+        <div class="visual-bottom"><span><i></i> PERCEPTION</span><span><i></i> PLANNING</span><span><i></i> CONTROL</span></div>
+      </div>
+      <div class="hero-meta"><span>01 / PORTFOLIO</span><span>ECUADOR <span class="accent">●</span></span></div>
+      </div>
+    </section>
+    <section id="sobre-mi" class="section about">
+      <div class="container">
+        <div class="section-kicker"><span>01</span> <span data-i18n="navAbout">Sobre mí</span></div>
+        <div class="about-grid">
+          <div><h2 data-i18n="aboutTitle">De la percepción<br> a la acción.</h2><img id="profile-photo" class="profile-photo" alt="Luigi Miranda" hidden></div>
+          <div><p class="lead" data-i18n="aboutText">Mi enfoque está en la robótica y la visión artificial, integrando conocimientos de mecánica, electrónica y software para desarrollar sistemas capaces de percibir e interactuar con su entorno.</p><p class="muted" data-i18n="aboutText2">Me interesa investigar y aplicar inteligencia artificial, percepción visual y sistemas autónomos en desafíos de ingeniería.</p><div class="skills" id="skills"></div></div>
+        </div>
+      </div>
+    </section>
+    <section id="trayectoria" class="section container">
+      <div class="section-kicker"><span>02</span> <span data-i18n="navExperience">Trayectoria</span></div>
+      <div class="section-head"><h2 data-i18n="experienceTitle">Formación y experiencia.</h2><p data-i18n="experienceSubtitle">Mi recorrido académico y profesional.</p></div>
+      <div class="timeline-grid">
+        <div class="timeline-column"><h3 data-i18n="education">Formación académica</h3><div id="education-list" class="timeline"></div></div>
+        <div class="timeline-column"><h3 data-i18n="professional">Experiencia profesional</h3><div id="experience-list" class="timeline"></div></div>
+      </div>
+    </section>
+    <section id="proyectos" class="section projects-section">
+      <div class="container">
+        <div class="section-kicker"><span>03</span> <span data-i18n="navProjects">Proyectos</span></div>
+        <div class="section-head"><h2 data-i18n="projectsTitle">Ideas en movimiento.</h2><p data-i18n="projectsSubtitle">Exploraciones de software, robótica y percepción.</p></div>
+        <div id="project-filters" class="project-filters" aria-label="Categorías de proyectos"></div>
+        <div class="project-grid" id="project-list"></div>
+      </div>
+    </section>
+    <section id="publicaciones" class="section container">
+      <div class="section-kicker"><span>04</span> <span data-i18n="navPosts">Publicaciones</span></div>
+      <div class="section-head"><h2 data-i18n="postsTitle">Actividad y publicaciones.</h2><p data-i18n="postsSubtitle">Investigación, aprendizajes y avances compartidos en LinkedIn.</p></div>
+      <div id="post-list" class="post-list"></div>
+    </section>
+    <section id="contacto" class="section contact-section">
+      <div class="container contact-inner">
+        <div><div class="section-kicker"><span>05</span> <span data-i18n="contact">Contacto</span></div><h2 data-i18n="contactTitle">Construyamos algo<br> interesante.</h2><p data-i18n="contactText">Abierto a oportunidades de colaboración, investigación y desarrollo en robótica e inteligencia artificial.</p></div>
+        <div id="contact-links" class="contact-links"></div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="container footer-inner"><span>© <span id="year">2026</span> Luigi Miranda.</span><a href="#inicio" data-i18n="backTop">Volver arriba ↑</a></div></footer>
+  <noscript><p class="noscript">Activa JavaScript para mostrar la trayectoria, los proyectos y las publicaciones.</p></noscript>
+  <dialog id="media-dialog" class="media-dialog">
+    <button id="media-close" class="media-close" type="button" aria-label="Cerrar">×</button>
+    <img id="media-full" alt="">
+  </dialog>
+  <script src="profile.js"></script>
+  <script src="app.js"></script>
+  <script src="background.js"></script>
+</body>
+</html>
